@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,31 +20,48 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void AddCar(Car car)
+        public IResult AddCar(Car car)
         {
-            if(car.Description.Length>=2&&car.DailyPrice>0)
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
+                return new SuccessResult("Ürün başarıyla eklendi");
             }
             else
             {
-                Console.WriteLine("olmadı");
+                return new ErrorResult("Ürün açıllaması en az 2 karakter olmalıdır");
             }
         }
 
-        public List<Car> GetAll()
+        public IResult DeleteCar(Car car)
         {
-           return _carDal.GetAll();
+            _carDal.Delete(car);
+            return new SuccessResult();
         }
 
-        public Car GetCarByColorId(int colorId)
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.Get(x => x.ColorId == colorId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "Ürünler başarıyla listelendi");
         }
 
-        public Car GetCarsByBrandId(int brandId)
+        public IDataResult<Car> GetCarByColorId(int colorId)
         {
-            return _carDal.Get(x=>x.BrandId == brandId);
+            return new SuccessDataResult<Car>(_carDal.Get(x => x.ColorId == colorId));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+
+        public IDataResult<Car> GetCarsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(x => x.BrandId == brandId));
+        }
+
+        public IResult UpdateCar(Car car)
+        {
+            return new SuccessResult();
         }
     }
 }
