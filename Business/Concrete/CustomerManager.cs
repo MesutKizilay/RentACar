@@ -9,24 +9,24 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class BrandManager : IBrandService
+    public class CustomerManager : ICustomerService
     {
-        public IResult AddBrand(Brand brand)
+        public IResult AddCustomer(Customer customer)
         {
             throw new NotImplementedException();
         }
 
-        public IResult DeleteBrand(Brand brand)
+        public IResult DeleteCustomer(Customer customer)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Brand>> GetAll()
+        public IDataResult<List<Customer>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IResult UpdateBrand(Brand brand)
+        public IResult UpdateCustomer(Customer customer)
         {
             throw new NotImplementedException();
         }

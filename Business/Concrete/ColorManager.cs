@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,22 +11,22 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
-        public void AddColor(Color color)
+        public IResult AddColor(Color color)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteColor(Color color)
+        public IResult DeleteColor(Color color)
         {
             throw new NotImplementedException();
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateColor(Color color)
+        public IResult UpdateColor(Color color)
         {
             throw new NotImplementedException();
         }
