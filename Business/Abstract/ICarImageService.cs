@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    internal interface ICarImageService
+    public interface ICarImageService
     {
+        IResult AddCarImage(IFormFile file,CarImage carImage);
+        IResult UpdateCarImage(CarImage carImage);
+        IResult DeleteCarImage(int carImageId);
+        IDataResult<List<CarImage>> GetAll();
     }
 }

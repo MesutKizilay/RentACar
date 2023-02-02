@@ -10,6 +10,12 @@ namespace Business.Constant
     {
         //Rental
         public static string RentIsSucceed = "Araç kiralama başarıyla gerçekleşti";
-        internal static string TheCarCanNotBeRented="Araç teslim edilmemiş,kiralama için uygun değil";
+        public static string TheCarCanNotBeRented="Araç teslim edilmemiş,kiralama için uygun değil";
+        
+        
+        //CarImage
+        public static string AddedNewImage="Yeni resim eklendi";
+        internal static string ImageLimitExceded="Bir araca en fazla 5 resim eklenebilir";
+        internal static string DeletedImage="Resim başarıyla silindi";
     }
 }
