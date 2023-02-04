@@ -43,7 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "Ürünler başarıyla listelendi");
         }
 
-        public IDataResult<Car> GetCarByColorId(int colorId)
+        public IDataResult<Car> GetCarsByColorId(int colorId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(x => x.ColorId == colorId));
         }

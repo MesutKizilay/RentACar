@@ -28,6 +28,16 @@ namespace Core.Utilities.Helpers
             return _filePath;
         }
 
+        public void Update(IFormFile file,string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+            //GetFilePath(file);
+            Upload(file);
+        }
+
         public void Upload(IFormFile file)
         {
             if (file != null && file.Length > 0)

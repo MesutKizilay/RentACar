@@ -15,7 +15,9 @@ namespace Business.Constant
         
         //CarImage
         public static string AddedNewImage="Yeni resim eklendi";
-        internal static string ImageLimitExceded="Bir araca en fazla 5 resim eklenebilir";
-        internal static string DeletedImage="Resim başarıyla silindi";
+        public static string ImageLimitExceded="Bir araca en fazla 5 resim eklenebilir";
+        public static string DeletedImage="Resim başarıyla silindi";
+        public static string CarImageUpdated="Araba başarıyla güncellendi";
+        internal static string ThereIsNoImageOfThisCar="Bu arabaya ait resim bulunmamakta";
     }
 }

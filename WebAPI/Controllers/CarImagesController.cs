@@ -39,5 +39,38 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _carImageService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }        
+        
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int carId)
+        {
+            var result = _carImageService.GetCarImagesByCarId(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update([FromForm]IFormFile file, [FromForm] CarImage carImage)
+        {
+            var result=_carImageService.UpdateCarImage(file, carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }
