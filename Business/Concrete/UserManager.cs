@@ -1,34 +1,32 @@
 ﻿using Business.Abstract;
-using Core.Utilities.Results;
-using Entities.Concrete;
-using System;
+using Core.Entities.Concrete;
+using DataAccess.Abstract;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        public IResult AddUser(User user)
+        IUserDal _userDal;
+
+        public UserManager(IUserDal userDal)
         {
-            throw new NotImplementedException();
+            _userDal = userDal;
         }
 
-        public IResult DeleteUser(User user)
+        public List<OperationClaim> GetClaims(User user)
         {
-            throw new NotImplementedException();
+            return _userDal.GetClaims(user);
         }
 
-        public IDataResult<List<User>> GetAll()
+        public void Add(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Add(user);
         }
 
-        public IResult UpdateUser(User user)
+        public User GetByMail(string email)
         {
-            throw new NotImplementedException();
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

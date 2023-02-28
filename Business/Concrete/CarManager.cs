@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
@@ -24,10 +25,10 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("admin,car.add")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult AddCar(Car car)
         {
-
             _carDal.Add(car);
             return new SuccessResult("Ürün başarıyla eklendi");
         }
