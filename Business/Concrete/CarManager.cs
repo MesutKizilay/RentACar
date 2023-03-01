@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
+using Business.Constant;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
@@ -30,7 +31,7 @@ namespace Business.Concrete
         public IResult AddCar(Car car)
         {
             _carDal.Add(car);
-            return new SuccessResult("Ürün başarıyla eklendi");
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult DeleteCar(Car car)
@@ -41,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "Ürünler başarıyla listelendi");
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
         public IDataResult<Car> GetCarsByColorId(int colorId)
