@@ -27,13 +27,13 @@ namespace Business.Concrete
         {
             var result = BusinessRules.Run(CheckIfCanTheCarRent(rental.CarId));
 
-            if(result != null)
+            if (result != null)
             {
                 return new ErrorResult(result.Message);
             }
 
             rental.IsTheCarReturnBack = false;
-            rental.RentDate=DateTime.Now;
+            rental.RentDate = DateTime.Now;
 
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentIsSucceed);
@@ -41,7 +41,7 @@ namespace Business.Concrete
 
         public IResult DeleteRental(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
         }
 
         public IDataResult<List<Rental>> GetAll()
